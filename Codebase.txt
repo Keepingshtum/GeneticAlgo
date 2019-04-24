@@ -1,0 +1,36 @@
+//Will be updated as I add functions
+/* To do
+1.> Function to add roads, update action list WIP: ANANT
+2.>Function to add buildings, update action list WIP:ANANT
+3.>Function to check if its a valid map (no buildings with no road access)
+4.>Function to automate mapping (add roads, buildings until Map is filled)
+5.>Function to check fitness, update best fitness
+ */
+
+#include <iostream>
+using namespace std;
+char Map[5][5];
+int Actions[25]; //The actions list
+Int BestActions[25];//The best actions list at current
+Int BestFitness;//Best current fitness score
+ 
+int CheckFitness(int Acts[])
+{
+    //Optimise for traffic (roads)
+    //Add “Highway access”- Roads must start from here
+}
+void PrintMap()
+{
+    for(int i=0;i<5;i++)
+    {
+        for(int j=0;j<5;j++)
+            cout<<Map[i][j]<<" ";
+    }
+}
+int main()
+{
+    
+  
+    return 0;
+}
+
