@@ -1,0 +1,171 @@
+
+//Will be updated as I add functions
+/* To do
+1.> Function to add roads, update action list
+2.>Function to add buildings, update action list 
+3.>Function to check if its a valid map (no buildings with no road access)
+4.>Function to automate mapping (add roads, buildings until Map is filled)
+5.>Function to check fitness, update best fitness
+*/ 
+
+#include <iostream>
+using namespace std;
+char Map[5][5];
+char Actions[25]; //The actions list
+int actCount=0;
+int BestActions[25];//The best actions list at current
+int BestFitness;//Best current fitness score
+
+int ComputeTraffic(int x, int y) //don't panic
+{
+    int traffic=0;
+    if(x==0||x==5||y==0||y==5)//edge or corner tile
+    {
+        if(x==0&&y==0)//top left corner
+        {
+            for(int i=0;i<1;i++)//cover all 3 adjacent tiles
+            {    
+                for(int j=0;j<1;j++)
+                {
+                    if(isalpha(Map[x+i][y+j]))
+                    traffic++; //add traffic if there are houses adjacent
+                }
+            }
+           return traffic;
+        }
+        
+        if(x==0&&y==5)//top right corner
+        {
+            for(int i=-1;i<0;i++)//cover all 3 adjacent tiles
+            {    
+                for(int j=0;j<1;j++)
+                {
+                    if(isalpha(Map[x+i][y+j]))
+                    traffic++; //add traffic if there are houses adjacent
+                }
+            }
+            return traffic;
+        }
+        
+        if(x==5&&y==0)//bottom left corner
+        {
+            for(int i=0;i<1;i++)//cover all 3 adjacent tiles
+            {    
+                for(int j=-1;j<0;j++)
+                {
+                    if(isalpha(Map[x+i][y+j]))
+                    traffic++; //add traffic if there are houses adjacent
+                }
+            }
+           return traffic;
+        }
+        
+         if(x==5&&y==5)//bottom right corner
+        {
+            for(int i=-1;i<0;i++)//cover all 3 adjacent tiles
+            {    
+                for(int j=-1;j<0;j++)
+                {
+                    if(isalpha(Map[x+i][y+j]))
+                    traffic++; //add traffic if there are houses adjacent
+                }
+            }
+            return traffic;
+        }
+        if(x==0)//left edge
+        {
+            for(int i=0;i<1;i++)//cover all 5 adjacent tiles
+            {    
+                for(int j=-1;j<1;j++)
+                {
+                    if(isalpha(Map[x+i][y+j]))
+                    traffic++; //add traffic if there are houses adjacent
+                }
+            }
+            return traffic;
+        }
+        if(y=0)//top edge
+        {
+            for(int i=-1;i<1;i++)//cover all 5 adjacent tiles
+            {    
+                for(int j=0;j<1;j++)
+                {
+                    if(isalpha(Map[x+i][y+j]))
+                    traffic++; //add traffic if there are houses adjacent
+                }
+            }
+          return traffic;
+        }
+        if(y=5)//bottom edge
+        {
+            for(int i=-1;i<1;i++)//cover all 3 adjacent tiles
+            {    
+                for(int j=-1;j<0;j++)
+                {
+                    if(isalpha(Map[x+i][y+j]))
+                    traffic++; //add traffic if there are houses adjacent
+                }
+            }
+            return traffic;
+        }
+        if(x=5)//right edge
+        {
+            for(int i=-1;i<0;i++)//cover all 3 adjacent tiles
+            {    
+                for(int j=-1;j<1;j++)
+                {
+                    if(isalpha(Map[x+i][y+j]))
+                    traffic++; //add traffic if there are houses adjacent
+                }
+            }
+           return traffic;
+        }
+        
+    }
+    else//not a edge or corner tile
+    {
+        for(int i=-1;i<1;i++)//cover all 8 adjacent tiles
+        {    for(int j=-1;j<1;j++)
+            {
+                if(isalpha(Map[x+i][y+j]))
+                    traffic++; //add traffic if there are houses adjacent
+            }
+        } 
+    }
+    
+    return traffic;
+}
+
+void AddRoads(int x, int y, int traffic)
+{
+    if(Map[x][y]==-1)//Empty slot
+    {
+        Map[x][y]=traffic;
+        Actions[actCount]='A';
+        actCount++;
+        
+    }
+}
+ 
+int CheckFitness(int Acts[])
+{
+    //Optimise for traffic (roads)
+    //Add “Highway access”- Roads must start from here
+}
+void PrintMap()
+{
+    for(int i=0;i<5;i++)
+    {
+        for(int j=0;j<5;j++)
+            cout<<Map[i][j]<<" ";
+    }
+}
+int main()
+{
+    
+  
+    return 0;
+}
+
+
+
