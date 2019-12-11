@@ -1,5 +1,5 @@
 # GeneticAlgo
-PBL repo for DAA, OOC and SE.
+PBL repo for the college classes: DAA, OOC and SE.
 
 20/08/2019
 Note to all future visitors on my profile:
